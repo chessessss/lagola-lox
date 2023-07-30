@@ -11,16 +11,13 @@ lose = font1.render('Ти програв!', True, (180, 0, 0))
 font2 = font.SysFont("Modern", 32)
 
 
-mixer.init()
-mixer.music.load('')
-mixer.music.play()
-fire_sound = mixer.Sound('')
 
 
-img_back = "galaxy.jpg" 
-img_car1 = "pngegg.png"  
-img_bullet = "bullet.png" 
-img_car2 = "ufo.png" 
+
+
+img_back = "back.jpg" 
+img_car1 = "car11.png"  
+img_car2 = "car11.png" 
 
 
 
@@ -88,11 +85,11 @@ background = transform.scale(image.load(img_back), (win_width, win_height))
 car1 = Player(img_car1, 5, win_height - 100, 70, 100, 10)
 
 
-car2 = sprite.Group()
+cars2 = sprite.Group()
 for i in range(1, 6):
     car2 = Enemy(img_car2, randint(
         80, win_width - 80), -40, 80, 70, randint(1, 5))
-    car2.add(car2)
+    cars2.add(car2)
 
 finish = False
 run = True
@@ -109,12 +106,12 @@ while run:
  
         #оновлюємо їх у новому місці при кожній ітерації циклу
         car1.reset()
-        car2.draw(window)
+        car2.reset()
 
 
 
-        if sprite.spritecollide(car1, car2, False):
-            sprite.spritecollide(car1, car2, True)
+        if sprite.spritecollide(car1, cars2, False):
+            sprite.spritecollide(car1, cars2, True)
             life = life -1
 
 
